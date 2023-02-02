@@ -9,12 +9,17 @@ namespace CodeBase.Player
     {
         [SerializeField] private PlayerMovement playerMovement;
         [SerializeField] private Animator anim;
+        [SerializeField] private NetworkAnimator networkAnimator;
+        
+        [SyncVar]
         [SerializeField, Range(25, 250)] private float powerDash;
         [SerializeField] private CharacterController character;
+        [SyncVar]
         [SerializeField] private float cooldownDash;
 
+        [SyncVar]private bool _wasHitEnemy;
         private float _elapsedCooldownDash;
-        private bool _isActiveAbility;
+        [SyncVar]private bool _isActiveAbility;
         private Vector3 _impact = Vector3.zero;
         private const float Mass = 1f;
         private static readonly int IsAttack = Animator.StringToHash("isAttack");
@@ -26,8 +31,9 @@ namespace CodeBase.Player
 
         private void Update()
         {
-            Move();
+            if (!isLocalPlayer) return;
             
+            Move();
             if (Input.GetMouseButtonDown(0) && !_isActiveAbility) 
                 AddImpact(playerMovement.currentDirection, powerDash);
 
@@ -40,24 +46,48 @@ namespace CodeBase.Player
                     _elapsedCooldownDash = cooldownDash;
                 }
             }
-
             ConsumeEnergy();
         }
 
         private void Move()
         {
-            if (_impact.magnitude > 0.2f)
-                character.Move(_impact * Time.deltaTime);
+            if (isLocalPlayer)
+            {
+                if (_impact.magnitude > 0.2f)
+                    character.Move(_impact * Time.deltaTime);   
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!isLocalPlayer) return;
+            if (other.TryGetComponent(out PlayerAbility opponent) && opponent != this)
+            {
+                if (_isActiveAbility && !_wasHitEnemy)
+                {
+                    _wasHitEnemy = true;
+                    ChangeColorPlayer(opponent);
+                }
+            }
+        }
+
+        [Command]
+        private void ChangeColorPlayer(PlayerAbility opponent)
+        {
+            NetworkServer.Destroy(opponent.gameObject);
         }
 
         private void AddImpact(Vector3 dir, float force)
         {
-            _isActiveAbility = true;
-            dir.Normalize();
-            if (dir.y < 0) 
-                dir.y = -dir.y;
-            _impact += dir.normalized * force / Mass;
-            anim.SetTrigger(IsAttack);
+            if (isLocalPlayer)
+            {
+                _isActiveAbility = true;
+                dir.Normalize();
+                if (dir.y < 0) 
+                    dir.y = -dir.y;
+                _impact += dir.normalized * force / Mass;
+                networkAnimator.SetTrigger(IsAttack);   
+            }
         }
 
         private void ConsumeEnergy() => _impact = Vector3.Lerp(_impact, Vector3.zero, 5 * Time.deltaTime);

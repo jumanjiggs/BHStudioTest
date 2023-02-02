@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System;
+using Mirror;
 using UnityEngine;
 
 namespace CodeBase.Player
@@ -16,23 +17,22 @@ namespace CodeBase.Player
 
         private void Start()
         {
-            HideCursor();
+           // HideCursor();
         }
 
         private void Update()
         {
-            if (isOwned)
-            {
-                currentDirection = GetAxis();
-                currentDirection = UpdateDirection(currentDirection);
-                Move(currentDirection);
-                RotateCamera();
+            if (!isLocalPlayer) return;
+            
+            currentDirection = GetAxis();
+            currentDirection = UpdateDirection(currentDirection);
+            Move(currentDirection);
+            RotateCamera();
 
-                if (currentDirection.x == 0 && currentDirection.z == 0)
-                    anim.SetBool(IsWalk, false);
-                else
-                    anim.SetBool(IsWalk, true);
-            }
+            if (currentDirection.x == 0 && currentDirection.z == 0)
+                anim.SetBool(IsWalk, false);
+            else
+                anim.SetBool(IsWalk, true);
         }
 
         private static Vector3 GetAxis()
@@ -42,7 +42,8 @@ namespace CodeBase.Player
             var dir = new Vector3(h, 0, v);
             return dir;
         }
-
+        
+        
         private Vector3 UpdateDirection(Vector3 dir)
         {
             dir = transform.TransformDirection(dir);
