@@ -11,8 +11,7 @@ namespace CodeBase.Player
         [SerializeField] private Animator anim;
         [SerializeField] private float speed = 5;
         [SerializeField] private float mouseSens = 250f;
-
-        private static readonly int IsWalk = Animator.StringToHash("isWalk");
+        [SerializeField] private PlayerAnimator playerAnimator;
         
         private void Update()
         {
@@ -24,17 +23,17 @@ namespace CodeBase.Player
             RotateCamera();
 
             if (currentDirection.x == 0 && currentDirection.z == 0)
-                anim.SetBool(IsWalk, false);
+                playerAnimator.StopWalk();
             else
-                anim.SetBool(IsWalk, true);
+                playerAnimator.PlayWalk();
         }
 
         private static Vector3 GetAxis()
         {
-            var h = Input.GetAxis("Horizontal");
-            var v = Input.GetAxis("Vertical");
-            var dir = new Vector3(h, 0, v);
-            return dir;
+            var horizontal = Input.GetAxis("Horizontal");
+            var vertical = Input.GetAxis("Vertical");
+            var direction = new Vector3(horizontal, 0, vertical);
+            return direction;
         }
         
         

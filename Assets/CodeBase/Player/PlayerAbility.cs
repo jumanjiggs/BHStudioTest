@@ -8,13 +8,13 @@ namespace CodeBase.Player
     public class PlayerAbility : NetworkBehaviour
     {
         [SerializeField] private PlayerMovement playerMovement;
-        [SerializeField] private NetworkAnimator networkAnimator;
         [SerializeField] private Material hitMaterial;
         [SerializeField] private Material defaultMaterial;
         [SerializeField] private List<SkinnedMeshRenderer> allBody;
         [SerializeField] private CharacterController character;
         [SerializeField] private Scoreboard scoreboard;
         [SerializeField] private int currentScorePlayer;
+        [SerializeField] private PlayerAnimator playerAnimator;
 
         [SyncVar] [SerializeField, Range(10, 250)]
         private float powerDash;
@@ -28,7 +28,6 @@ namespace CodeBase.Player
         private float _elapsedCooldownDash;
         private Vector3 _impact = Vector3.zero;
         private const float Mass = 1f;
-        private static readonly int IsAttack = Animator.StringToHash("isAttack");
 
         private void Start()
         {
@@ -130,7 +129,7 @@ namespace CodeBase.Player
             if (dir.y < 0)
                 dir.y = -dir.y;
             _impact += dir.normalized * force / Mass;
-            networkAnimator.SetTrigger(IsAttack);
+            playerAnimator.PlayAttack();
         }
 
         [ClientRpc]

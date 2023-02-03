@@ -2722,6 +2722,7 @@ GameObject:
   - component: {fileID: 4062844613587465643}
   - component: {fileID: 7193377329632960720}
   - component: {fileID: 7566000315274678464}
+  - component: {fileID: 5231622128321467913}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2896,6 +2897,7 @@ MonoBehaviour:
   anim: {fileID: 3032865297113403100}
   speed: 5
   mouseSens: 250
+  playerAnimator: {fileID: 5231622128321467913}
 --- !u!114 &4062844613587465643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,7 +2929,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerMovement: {fileID: 949796403857615593}
-  networkAnimator: {fileID: 4974893288446908683}
   hitMaterial: {fileID: 2100000, guid: 0e8efd2740010d74dbcda33d2d36f21f, type: 2}
   defaultMaterial: {fileID: 2100000, guid: b5278db566c23d34ea4f9b9657279452, type: 2}
   allBody:
@@ -2948,6 +2949,7 @@ MonoBehaviour:
   character: {fileID: 2360895485580913703}
   scoreboard: {fileID: 0}
   currentScorePlayer: 0
+  playerAnimator: {fileID: 5231622128321467913}
   powerDash: 100
   cooldownDash: 1.5
   timeBeHitted: 3
@@ -2964,6 +2966,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5231622128321467913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270786990397428149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045746333712489198df932faf50c253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
+  anim: {fileID: 3032865297113403100}
+  networkAnimator: {fileID: 4974893288446908683}
 --- !u!1 &8499089924796389271
 GameObject:
   m_ObjectHideFlags: 0
