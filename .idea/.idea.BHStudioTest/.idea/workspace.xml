@@ -12,8 +12,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7b2a272e51214e2f91bbc4fb4f28eff8159400/4f/07be8346/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Connection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Player/Scoreboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.9/Runtime/Behaviours/CinemachineVirtualCamera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Hookah Simulator 3D/Assets/CodeBase/Infrastructure/UI/UIFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Hookah Simulator 3D/Assets/CodeBase/Infrastructure/UI/UIRealization.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,7 +91,10 @@
       <workItem from="1675158306236" duration="8488000" />
       <workItem from="1675181965122" duration="2722000" />
       <workItem from="1675269501641" duration="1513000" />
-      <workItem from="1675325254387" duration="4979000" />
+      <workItem from="1675325254387" duration="26248000" />
+      <workItem from="1675357751410" duration="4375000" />
+      <workItem from="1675371714363" duration="1556000" />
+      <workItem from="1675413740819" duration="9007000" />
     </task>
     <servers />
   </component>

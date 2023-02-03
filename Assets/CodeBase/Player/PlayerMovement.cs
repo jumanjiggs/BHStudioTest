@@ -1,5 +1,4 @@
-﻿using System;
-using Mirror;
+﻿using Mirror;
 using UnityEngine;
 
 namespace CodeBase.Player
@@ -14,12 +13,7 @@ namespace CodeBase.Player
         [SerializeField] private float mouseSens = 250f;
 
         private static readonly int IsWalk = Animator.StringToHash("isWalk");
-
-        private void Start()
-        {
-           // HideCursor();
-        }
-
+        
         private void Update()
         {
             if (!isLocalPlayer) return;

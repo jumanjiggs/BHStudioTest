@@ -2812,7 +2812,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &3032865297113403101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,11 +2927,30 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerMovement: {fileID: 949796403857615593}
-  anim: {fileID: 3032865297113403100}
   networkAnimator: {fileID: 4974893288446908683}
-  powerDash: 100
+  hitMaterial: {fileID: 2100000, guid: 0e8efd2740010d74dbcda33d2d36f21f, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: b5278db566c23d34ea4f9b9657279452, type: 2}
+  allBody:
+  - {fileID: 850671499596137030}
+  - {fileID: 921520135205513699}
+  - {fileID: 1759395786854996682}
+  - {fileID: 8145419115099943854}
+  - {fileID: 5974203438622447618}
+  - {fileID: 5051873422672606431}
+  - {fileID: 4833640909516922400}
+  - {fileID: 8872472142874652318}
+  - {fileID: 1875247183262465346}
+  - {fileID: 3968697964789711419}
+  - {fileID: 3789632942812357049}
+  - {fileID: 1161518674171940401}
+  - {fileID: 893861626845219988}
+  - {fileID: 2215019003854624600}
   character: {fileID: 2360895485580913703}
+  scoreboard: {fileID: 0}
+  currentScorePlayer: 0
+  powerDash: 100
   cooldownDash: 1.5
+  timeBeHitted: 3
 --- !u!65 &7566000315274678464
 BoxCollider:
   m_ObjectHideFlags: 0

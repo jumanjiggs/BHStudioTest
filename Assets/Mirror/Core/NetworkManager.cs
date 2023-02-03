@@ -897,7 +897,7 @@ namespace Mirror
             }
         }
 
-        void UpdateScene()
+         void UpdateScene()
         {
             if (loadingSceneAsync != null && loadingSceneAsync.isDone)
             {
