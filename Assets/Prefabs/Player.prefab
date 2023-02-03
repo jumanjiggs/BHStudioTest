@@ -2981,7 +2981,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  anim: {fileID: 3032865297113403100}
+  animator: {fileID: 3032865297113403100}
   networkAnimator: {fileID: 4974893288446908683}
 --- !u!1 &8499089924796389271
 GameObject:
